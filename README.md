@@ -70,7 +70,7 @@
 ---
 
 # ERD
-![ERD 이미지](table/logitics_erd.png)
+![ERD 이미지](table/logistics_erd.png)
 
 
 
