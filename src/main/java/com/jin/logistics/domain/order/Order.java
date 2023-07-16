@@ -3,27 +3,20 @@ package com.jin.logistics.domain.order;
 import com.jin.logistics.domain.BaseEntity;
 import com.jin.logistics.domain.agency.Agency;
 import com.jin.logistics.domain.type.OrderStatus;
-import java.time.LocalDate;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "orders")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Builder
 public class Order extends BaseEntity {
 
   @Id
@@ -32,22 +25,21 @@ public class Order extends BaseEntity {
   @ManyToOne(optional = false)
   @JoinColumn(name = "agency_code")
   private Agency agency;
-  @NotNull
+  @Column(nullable = false)
   private LocalDate orderDate;
-  @NotNull
+  @Column(nullable = false)
   private LocalDate shippingDate;
-  @NotNull
-  @Size(max = 30)
+  @Column(nullable = false, length = 30)
   @Enumerated(EnumType.STRING)
   private OrderStatus orderStatus = OrderStatus.PENDING;
-  @NotNull
+  @Column(nullable = false)
   private int totalQuantity;
-  @NotNull
+  @Column(nullable = false)
   private long totalSupplyPrice;
-  @NotNull
+  @Column(nullable = false)
   private float totalVat;
-  @NotNull
+  @Column(nullable = false)
   private long totalAmount;
-  @Size(max = 3000)
+  @Column(length = 3000)
   private String notes;
 }
