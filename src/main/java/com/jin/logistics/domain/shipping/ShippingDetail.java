@@ -2,21 +2,19 @@ package com.jin.logistics.domain.shipping;
 
 import com.jin.logistics.domain.BaseEntity;
 import com.jin.logistics.domain.product.Product;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
 @IdClass(ShippingDetailPk.class)
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Builder
 public class ShippingDetail extends BaseEntity {
 
   @Id
@@ -27,12 +25,12 @@ public class ShippingDetail extends BaseEntity {
   @ManyToOne(optional = false)
   @JoinColumn(name = "product_code")
   private Product product;
-  @NotNull
+  @Column(nullable = false)
   private int quantity;
-  @NotNull
+  @Column(nullable = false)
   private long productSupplyPrice;
-  @NotNull
+  @Column(nullable = false)
   private float productVat;
-  @NotNull
+  @Column(nullable = false)
   private long productTotalAmount;
 }
