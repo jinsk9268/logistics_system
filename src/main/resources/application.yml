@@ -5,8 +5,11 @@ spring:
     username: logistics
     password: logistics
   jpa:
-    generate-ddl: false
-    show-sql: true
     hibernate:
       ddl-auto: validate
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 
