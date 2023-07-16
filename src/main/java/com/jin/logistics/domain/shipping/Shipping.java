@@ -2,23 +2,19 @@ package com.jin.logistics.domain.shipping;
 
 import com.jin.logistics.domain.BaseEntity;
 import com.jin.logistics.domain.order.Order;
-import java.time.LocalDate;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Builder
 public class Shipping extends BaseEntity {
 
   @Id
@@ -27,16 +23,16 @@ public class Shipping extends BaseEntity {
   @ManyToOne(optional = false)
   @JoinColumn(name = "order_id")
   private Order order;
-  @NotNull
+  @Column(nullable = false)
   private LocalDate shippingCompleteDate;
-  @NotNull
+  @Column(nullable = false)
   private int totalQuantity;
-  @NotNull
+  @Column(nullable = false)
   private long totalSupplyPrice;
-  @NotNull
+  @Column(nullable = false)
   private float totalVat;
-  @NotNull
+  @Column(nullable = false)
   private long totalAmount;
-  @Size(max = 3000)
+  @Column(length = 3000)
   private String notes;
 }
