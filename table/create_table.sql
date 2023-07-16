@@ -1,6 +1,6 @@
 CREATE TABLE logistics_admin (
     code VARCHAR(30) PRIMARY KEY ,
-    id VARCHAR(30) NOT NULL ,
+    id VARCHAR(30) NOT NULL UNIQUE ,
     password VARCHAR(100) NOT NULL ,
     name VARCHAR(30) NOT NULL ,
     mobile VARCHAR(30) NOT NULL ,
