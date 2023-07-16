@@ -2,15 +2,8 @@ package com.jin.logistics.domain.product;
 
 import com.jin.logistics.domain.BaseEntity;
 import com.jin.logistics.domain.type.StockChange;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -30,12 +23,11 @@ public class ProductStockTx extends BaseEntity {
   @ManyToOne(optional = false)
   @JoinColumn(name = "product_code")
   private Product product;
-  @NotNull
-  @Size(max = 30)
+  @Column(nullable = false, length = 30)
   @Enumerated(EnumType.STRING)
   private StockChange stockChange;
-  @Size(max = 3000)
+  @Column(length = 3000)
   private String notes;
-  @NotNull
+  @Column(nullable = false)
   private int quantity;
 }
