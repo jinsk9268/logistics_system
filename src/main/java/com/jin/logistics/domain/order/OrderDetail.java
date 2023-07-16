@@ -2,11 +2,8 @@ package com.jin.logistics.domain.order;
 
 import com.jin.logistics.domain.BaseEntity;
 import com.jin.logistics.domain.product.Product;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,12 +24,12 @@ public class OrderDetail extends BaseEntity {
   @ManyToOne(optional = false)
   @JoinColumn(name = "product_code")
   private Product product;
-  @NotNull
+  @Column(nullable = false)
   private int quantity;
-  @NotNull
+  @Column(nullable = false)
   private long productSupplyPrice;
-  @NotNull
+  @Column(nullable = false)
   private float productVat;
-  @NotNull
+  @Column(nullable = false)
   private long productTotalAmount;
 }
