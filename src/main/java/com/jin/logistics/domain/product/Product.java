@@ -1,34 +1,35 @@
 package com.jin.logistics.domain.product;
 
 import com.jin.logistics.domain.BaseEntity;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@Builder
 public class Product extends BaseEntity {
 
   @Id
-  @Size(max = 30)
+  @Column(length = 30)
   private String code;
-  @NotNull
-  @Size(max = 30)
+  @Column(nullable = false, length = 30)
   private String name;
-  @NotNull
+  @Column(nullable = false)
   private int supplyPrice;
-  @NotNull
+  @Column(nullable = false)
   private float vat;
-  @NotNull
+  @Column(nullable = false)
   private int boxQuantity;
-  @Size(max = 3000)
+  @Column(length = 3000)
   private String description;
-  @Size(max = 30)
+  @Column(length = 30)
   private String manufacturer;
 }
