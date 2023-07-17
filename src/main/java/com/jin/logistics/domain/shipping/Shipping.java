@@ -19,7 +19,7 @@ public class Shipping extends BaseEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private long id;
+  private Long id;
   @ManyToOne(optional = false)
   @JoinColumn(name = "order_id")
   private Order order;
