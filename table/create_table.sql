@@ -3,7 +3,7 @@ CREATE TABLE logistics_admin (
     id VARCHAR(30) NOT NULL UNIQUE ,
     password VARCHAR(100) NOT NULL ,
     name VARCHAR(30) NOT NULL ,
-    mobile VARCHAR(30) NOT NULL ,
+    mobile VARCHAR(11) NOT NULL ,
     created_at DATETIME NOT NULL ,
     modified_at DATETIME
 );
@@ -14,7 +14,7 @@ CREATE TABLE agency (
     agency_name VARCHAR(30) NOT NULL ,
     email VARCHAR(50) NOT NULL ,
     ceo_name VARCHAR(30) NOT NULL ,
-    business_number VARCHAR(30) NOT NULL ,
+    business_number VARCHAR(10) NOT NULL ,
     contact VARCHAR(30) NOT NULL ,
     shipping_address VARCHAR(1000) NOT NULL ,
     credit_limit BIGINT NOT NULL DEFAULT 0,
