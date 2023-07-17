@@ -21,7 +21,7 @@ public class ProductStockTx extends BaseEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private long id;
+  private Long id;
   @ManyToOne(optional = false)
   @JoinColumn(name = "product_code")
   private Product product;
