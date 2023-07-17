@@ -25,7 +25,7 @@ CREATE TABLE agency (
 CREATE TABLE agency_credit_transaction (
     id BIGINT AUTO_INCREMENT PRIMARY KEY ,
     agency_code VARCHAR(30) NOT NULL,
-    balance BIGINT NOT NULL ,
+    credit_change BIGINT NOT NULL ,
     notes VARCHAR(3000) ,
     created_at DATETIME NOT NULL ,
     modified_at DATETIME,
