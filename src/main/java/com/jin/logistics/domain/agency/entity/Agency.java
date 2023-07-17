@@ -1,10 +1,7 @@
-package com.jin.logistics.domain.agency;
+package com.jin.logistics.domain.agency.entity;
 
 import com.jin.logistics.domain.BaseEntity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -28,7 +25,7 @@ public class Agency extends BaseEntity {
   private String email;
   @Column(nullable = false, length = 30)
   private String ceoName;
-  @Column(nullable = false, length = 30)
+  @Column(nullable = false, length = 10)
   private String businessNumber;
   @Column(nullable = false, length = 30)
   private String contact;
