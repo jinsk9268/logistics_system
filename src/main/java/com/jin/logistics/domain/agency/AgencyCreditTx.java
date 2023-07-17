@@ -18,7 +18,7 @@ public class AgencyCreditTx extends BaseEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private long id;
+  private Long id;
   @ManyToOne(optional = false)
   @JoinColumn(name = "agency_code")
   private Agency agency;
