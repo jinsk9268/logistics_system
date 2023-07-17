@@ -1,4 +1,4 @@
-package com.jin.logistics.domain.agency;
+package com.jin.logistics.domain.agency.entity;
 
 import com.jin.logistics.domain.BaseEntity;
 import lombok.AllArgsConstructor;
@@ -23,7 +23,7 @@ public class AgencyCreditTx extends BaseEntity {
   @JoinColumn(name = "agency_code")
   private Agency agency;
   @Column(nullable = false)
-  private long balance;
+  private long creditChange;
   @Column(length = 3000)
   private String notes;
 }
