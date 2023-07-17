@@ -1,4 +1,4 @@
-package com.jin.logistics.domain.admin;
+package com.jin.logistics.domain.admin.entity;
 
 import com.jin.logistics.domain.BaseEntity;
 import lombok.AllArgsConstructor;
@@ -26,6 +26,6 @@ public class LogisticsAdmin extends BaseEntity {
   private String password;
   @Column(nullable = false, length = 30)
   private String name;
-  @Column(nullable = false, length = 30)
+  @Column(nullable = false, length = 11)
   private String mobile;
 }
