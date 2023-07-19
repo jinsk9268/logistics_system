@@ -1,7 +1,7 @@
-package com.jin.logistics.domain.order;
+package com.jin.logistics.domain.order.entity;
 
-import com.jin.logistics.domain.BaseEntity;
-import com.jin.logistics.domain.agency.Agency;
+import com.jin.logistics.domain.util.BaseEntity;
+import com.jin.logistics.domain.agency.entity.Agency;
 import com.jin.logistics.domain.type.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -37,9 +40,12 @@ public class Order extends BaseEntity {
   @Column(nullable = false)
   private long totalSupplyPrice;
   @Column(nullable = false)
-  private float totalVat;
+  private BigDecimal totalVat;
   @Column(nullable = false)
   private long totalAmount;
   @Column(length = 3000)
   private String notes;
+
+  @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+  private List<OrderDetail> orderDetails = new ArrayList<>();
 }
