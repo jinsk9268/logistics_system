@@ -1,11 +1,10 @@
-package com.jin.logistics.domain.product;
+package com.jin.logistics.domain.product.entity;
 
-import com.jin.logistics.domain.BaseEntity;
+import com.jin.logistics.domain.util.BaseEntity;
 import com.jin.logistics.domain.type.StockChange;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

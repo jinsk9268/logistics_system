@@ -1,6 +1,6 @@
-package com.jin.logistics.domain.product;
+package com.jin.logistics.domain.product.entity;
 
-import com.jin.logistics.domain.BaseEntity;
+import com.jin.logistics.domain.util.BaseEntity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;

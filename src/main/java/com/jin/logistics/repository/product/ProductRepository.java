@@ -1,6 +1,6 @@
 package com.jin.logistics.repository.product;
 
-import com.jin.logistics.domain.product.Product;
+import com.jin.logistics.domain.product.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

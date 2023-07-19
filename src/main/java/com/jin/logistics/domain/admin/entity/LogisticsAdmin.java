@@ -1,6 +1,6 @@
 package com.jin.logistics.domain.admin.entity;
 
-import com.jin.logistics.domain.BaseEntity;
+import com.jin.logistics.domain.util.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
