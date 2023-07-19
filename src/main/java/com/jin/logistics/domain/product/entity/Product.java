@@ -1,6 +1,6 @@
-package com.jin.logistics.domain.product;
+package com.jin.logistics.domain.product.entity;
 
-import com.jin.logistics.domain.BaseEntity;
+import com.jin.logistics.domain.util.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 
 @Entity
 @NoArgsConstructor
@@ -25,7 +26,7 @@ public class Product extends BaseEntity {
   @Column(nullable = false)
   private int supplyPrice;
   @Column(nullable = false)
-  private float vat;
+  private BigDecimal vat;
   @Column(nullable = false)
   private int boxQuantity;
   @Column(length = 3000)
