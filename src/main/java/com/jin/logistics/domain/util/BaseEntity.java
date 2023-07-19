@@ -1,4 +1,4 @@
-package com.jin.logistics.domain;
+package com.jin.logistics.domain.util;
 
 import java.time.LocalDateTime;
 import javax.persistence.Column;
