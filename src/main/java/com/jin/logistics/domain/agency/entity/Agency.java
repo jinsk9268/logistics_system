@@ -1,6 +1,6 @@
 package com.jin.logistics.domain.agency.entity;
 
-import com.jin.logistics.domain.BaseEntity;
+import com.jin.logistics.domain.util.BaseEntity;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -32,5 +32,9 @@ public class Agency extends BaseEntity {
   @Column(nullable = false, length = 1000)
   private String shippingAddress;
   @Column(nullable = false)
-  private long creditLimit = 0;
+  private long creditLimit;
+
+  public void changeCreditLimit(long credit) {
+    creditLimit += credit;
+  }
 }
