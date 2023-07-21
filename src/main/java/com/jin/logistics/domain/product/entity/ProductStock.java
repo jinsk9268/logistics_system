@@ -21,4 +21,9 @@ public class ProductStock extends BaseEntity {
   private Product product;
   @Column(nullable = false)
   private int quantity;
+
+  public ProductStock(Product product, int quantity) {
+    this.product = product;
+    this.quantity = quantity;
+  }
 }
