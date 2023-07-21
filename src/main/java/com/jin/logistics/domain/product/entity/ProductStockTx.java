@@ -27,8 +27,8 @@ public class ProductStockTx extends BaseEntity {
   @Column(nullable = false, length = 30)
   @Enumerated(EnumType.STRING)
   private StockChange stockChange;
-  @Column(length = 3000)
-  private String notes;
   @Column(nullable = false)
   private int quantity;
+  @Column(length = 3000)
+  private String notes;
 }
