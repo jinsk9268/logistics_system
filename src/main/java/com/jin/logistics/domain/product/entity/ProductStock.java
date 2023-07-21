@@ -1,15 +1,10 @@
 package com.jin.logistics.domain.product.entity;
 
 import com.jin.logistics.domain.util.BaseEntity;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
+import lombok.*;
 
 @Entity
 @NoArgsConstructor
@@ -22,6 +17,7 @@ public class ProductStock extends BaseEntity {
   private String productCode;
   @OneToOne(optional = false)
   @JoinColumn(name = "product_code")
+  @MapsId
   private Product product;
   @Column(nullable = false)
   private int quantity;
