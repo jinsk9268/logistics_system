@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Optional;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,6 +27,7 @@ public class OrderDto {
   private LocalDate shippingDate;
   @NotNull
   @Size(max = 30)
+  @Builder.Default
   private OrderStatus orderStatus = OrderStatus.PENDING;
   private int totalQuantity;
   private long totalSupplyPrice;
@@ -60,7 +62,7 @@ public class OrderDto {
         .totalSupplyPrice(order.getTotalSupplyPrice())
         .totalVat(order.getTotalVat())
         .totalAmount(order.getTotalAmount())
-        .notes(order.getNotes() == null ? "" : order.getNotes())
+        .notes(Optional.ofNullable(order.getNotes()).orElse(""))
         .build();
   }
 }
