@@ -12,4 +12,12 @@ public class VatCalculator {
         ? BigDecimal.ZERO
         : VAT_PER.multiply(BigDecimal.valueOf(supplyPrice));
   }
+
+  public static BigDecimal addVat(BigDecimal totalVat, BigDecimal vat, int quantity) {
+    return totalVat.add(vat.multiply(BigDecimal.valueOf(quantity)));
+  }
+
+  public static long totalVatToLong(BigDecimal totalVat) {
+    return totalVat.setScale(0, RoundingMode.HALF_UP).longValue();
+  }
 }
