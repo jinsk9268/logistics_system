@@ -32,7 +32,7 @@ public class Shipping extends BaseEntity {
   private int totalQuantity;
   @Column(nullable = false)
   private long totalSupplyPrice;
-  @Column(nullable = false)
+  @Column(nullable = false, columnDefinition = "DECIMAL(10, 1) DEFAULT 0")
   private BigDecimal totalVat;
   @Column(nullable = false)
   private long totalAmount;
