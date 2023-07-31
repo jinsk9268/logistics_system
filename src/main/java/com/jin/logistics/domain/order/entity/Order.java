@@ -3,6 +3,7 @@ package com.jin.logistics.domain.order.entity;
 import com.jin.logistics.domain.util.BaseEntity;
 import com.jin.logistics.domain.agency.entity.Agency;
 import com.jin.logistics.domain.type.OrderStatus;
+import com.jin.logistics.util.VatCalculator;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -32,14 +33,14 @@ public class Order extends BaseEntity {
   private LocalDate orderDate;
   @Column(nullable = false)
   private LocalDate shippingDate;
-  @Column(nullable = false, length = 30)
+  @Column(nullable = false, length = 30, columnDefinition = "VARCHAR(30) DEFAULT 'PENDING'")
   @Enumerated(EnumType.STRING)
-  private OrderStatus orderStatus = OrderStatus.PENDING;
+  private OrderStatus orderStatus;
   @Column(nullable = false)
   private int totalQuantity;
   @Column(nullable = false)
   private long totalSupplyPrice;
-  @Column(nullable = false)
+  @Column(nullable = false, columnDefinition = "DECIMAL(10, 1) DEFAULT 0")
   private BigDecimal totalVat;
   @Column(nullable = false)
   private long totalAmount;
