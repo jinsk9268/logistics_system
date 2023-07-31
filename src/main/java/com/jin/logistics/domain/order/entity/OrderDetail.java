@@ -32,7 +32,7 @@ public class OrderDetail extends BaseEntity {
   private int quantity;
   @Column(nullable = false)
   private long productSupplyPrice;
-  @Column(nullable = false)
+  @Column(nullable = false, columnDefinition = "DECIMAL(10, 1) DEFAULT 0")
   private BigDecimal productVat;
   @Column(nullable = false)
   private long productTotalAmount;
