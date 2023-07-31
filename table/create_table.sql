@@ -39,6 +39,8 @@ CREATE TABLE product (
     supply_price INT NOT NULL ,
     vat DECIMAL(10, 1) NOT NULL DEFAULT 0 ,
     box_quantity INT NOT NULL ,
+    box_supply_price INT NOT NULL ,
+    box_vat DECIMAL(10, 1) NOT NULL DEFAULT 0 ,
     description VARCHAR(3000) ,
     manufacturer VARCHAR(30) ,
     created_at DATETIME NOT NULL ,
