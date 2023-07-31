@@ -28,6 +28,8 @@ public class ProductDto {
   private int supplyPrice;
   private BigDecimal vat;
   private int boxQuantity;
+  private int boxSupplyPrice;
+  private BigDecimal boxVat;
   @Size(max = 3000)
   private String description;
   @Size(max = 30)
@@ -40,8 +42,9 @@ public class ProductDto {
         .supplyPrice(supplyPrice)
         .vat(VatCalculator.calVat(isTaxExemption, supplyPrice))
         .boxQuantity(boxQuantity)
+        .boxSupplyPrice(supplyPrice * boxQuantity)
+        .boxVat(VatCalculator.calVat(isTaxExemption, supplyPrice).multiply(BigDecimal.valueOf(boxQuantity)))
         .description(description)
-        .manufacturer(manufacturer)
         .build();
   }
 
@@ -54,7 +57,6 @@ public class ProductDto {
         .vat(product.getVat())
         .boxQuantity(product.getBoxQuantity())
         .description(Optional.ofNullable(product.getDescription()).orElse(""))
-        .manufacturer(Optional.ofNullable(product.getManufacturer()).orElse(""))
         .build();
   }
 }
