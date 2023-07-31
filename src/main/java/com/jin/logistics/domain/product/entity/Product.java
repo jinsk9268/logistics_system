@@ -25,13 +25,13 @@ public class Product extends BaseEntity {
   private String name;
   @Column(nullable = false)
   private int supplyPrice;
-  @Column(nullable = false)
+  @Column(nullable = false, columnDefinition = "DECIMAL(10, 1) DEFAULT 0")
   private BigDecimal vat;
   @Column(nullable = false)
   private int boxQuantity;
   @Column(nullable = false)
   private int boxSupplyPrice;
-  @Column(nullable = false)
+  @Column(nullable = false, columnDefinition = "DECIMAL(10, 1) DEFAULT 0")
   private BigDecimal boxVat;
   @Column(length = 3000)
   private String description;
