@@ -31,7 +31,7 @@ public class Agency extends BaseEntity {
   private String contact;
   @Column(nullable = false, length = 1000)
   private String shippingAddress;
-  @Column(nullable = false)
+  @Column(nullable = false, columnDefinition = "BIGINT DEFAULT 0")
   private long creditLimit;
 
   public void changeCreditLimit(long credit) {
