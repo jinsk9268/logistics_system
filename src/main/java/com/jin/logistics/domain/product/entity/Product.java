@@ -29,6 +29,10 @@ public class Product extends BaseEntity {
   private BigDecimal vat;
   @Column(nullable = false)
   private int boxQuantity;
+  @Column(nullable = false)
+  private int boxSupplyPrice;
+  @Column(nullable = false)
+  private BigDecimal boxVat;
   @Column(length = 3000)
   private String description;
   @Column(length = 30)
