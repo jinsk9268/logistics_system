@@ -35,6 +35,4 @@ public class Product extends BaseEntity {
   private BigDecimal boxVat;
   @Column(length = 3000)
   private String description;
-  @Column(length = 30)
-  private String manufacturer;
 }
