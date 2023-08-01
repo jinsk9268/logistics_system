@@ -49,4 +49,11 @@ public class Order extends BaseEntity {
 
   @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<OrderDetail> orderDetails = new ArrayList<>();
+
+  public void updateQuantityAndPrice(List<OrderDetail> orderDetails) {
+    this.totalQuantity = orderDetails.stream().mapToInt(OrderDetail::getQuantity).sum();
+    this.totalSupplyPrice = orderDetails.stream().mapToLong(OrderDetail::getProductSupplyPrice).sum();
+    this.totalVat = orderDetails.stream().map(OrderDetail::getProductVat).reduce(BigDecimal.ZERO, BigDecimal::add);
+    this.totalAmount = this.totalSupplyPrice + VatCalculator.vatToLong(this.totalVat);
+  }
 }
