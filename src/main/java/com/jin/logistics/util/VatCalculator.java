@@ -13,11 +13,11 @@ public class VatCalculator {
         : VAT_PER.multiply(BigDecimal.valueOf(supplyPrice));
   }
 
-  public static BigDecimal addVat(BigDecimal totalVat, BigDecimal vat, int quantity) {
-    return totalVat.add(vat.multiply(BigDecimal.valueOf(quantity)));
+  public static BigDecimal multiplyVat(BigDecimal vat, int quantity) {
+    return vat.multiply(BigDecimal.valueOf(quantity));
   }
 
-  public static long totalVatToLong(BigDecimal totalVat) {
+  public static long vatToLong(BigDecimal totalVat) {
     return totalVat.setScale(0, RoundingMode.HALF_UP).longValue();
   }
 }
