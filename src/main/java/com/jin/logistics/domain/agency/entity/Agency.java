@@ -34,7 +34,7 @@ public class Agency extends BaseEntity {
   @Column(nullable = false, columnDefinition = "BIGINT DEFAULT 0")
   private long creditLimit;
 
-  public void changeCreditLimit(long credit) {
-    creditLimit += credit;
+  public void changeCreditLimit(long changeCredit) {
+    this.creditLimit += changeCredit;
   }
 }
