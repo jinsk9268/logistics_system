@@ -18,13 +18,6 @@ import java.util.List;
 import java.util.Optional;
 
 public class OrderDto {
-  @NoArgsConstructor
-  @AllArgsConstructor
-  @Getter
-  public static class OrderItem {
-    private String productCode;
-    private int quantity;
-  }
 
   @NoArgsConstructor
   @AllArgsConstructor
