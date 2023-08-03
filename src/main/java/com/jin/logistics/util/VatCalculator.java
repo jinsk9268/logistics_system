@@ -13,8 +13,8 @@ public class VatCalculator {
         : VAT_PER.multiply(BigDecimal.valueOf(supplyPrice));
   }
 
-  public static BigDecimal multiplyVat(BigDecimal vat, int quantity) {
-    return vat.multiply(BigDecimal.valueOf(quantity));
+  public static BigDecimal multiplyIntWithVat(int intVal, BigDecimal vat) {
+    return BigDecimal.valueOf(intVal).multiply(vat);
   }
 
   public static long vatToLong(BigDecimal totalVat) {

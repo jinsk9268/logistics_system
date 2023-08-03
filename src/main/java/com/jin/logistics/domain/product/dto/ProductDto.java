@@ -41,7 +41,7 @@ public class ProductDto {
           .vat(vat)
           .boxQuantity(boxQuantity)
           .boxSupplyPrice(supplyPrice * boxQuantity)
-          .boxVat(VatCalculator.multiplyVat(vat, boxQuantity))
+          .boxVat(VatCalculator.multiplyIntWithVat(boxQuantity, vat))
           .description(description)
           .build();
     }
