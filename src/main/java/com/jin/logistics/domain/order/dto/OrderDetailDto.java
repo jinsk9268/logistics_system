@@ -37,7 +37,7 @@ public class OrderDetailDto {
           .quantity(quantity)
           .productSupplyPrice(productSupplyPrice)
           .productVat(productVat)
-          .productTotalAmount(PriceCalculator.calTotalPrice(productSupplyPrice, productVat))
+          .productTotalAmount(PriceCalculator.calTotalAmount(productSupplyPrice, productVat))
           .build();
     }
   }
