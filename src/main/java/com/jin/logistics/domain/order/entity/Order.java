@@ -1,9 +1,9 @@
 package com.jin.logistics.domain.order.entity;
 
-import com.jin.logistics.domain.util.BaseEntity;
 import com.jin.logistics.domain.agency.entity.Agency;
 import com.jin.logistics.domain.type.OrderStatus;
-import com.jin.logistics.util.VatCalculator;
+import com.jin.logistics.domain.util.BaseEntity;
+import com.jin.logistics.util.PriceCalculator;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -51,9 +51,9 @@ public class Order extends BaseEntity {
   private List<OrderDetail> orderDetails = new ArrayList<>();
 
   public void updateQuantityAndPrice(List<OrderDetail> orderDetails) {
-    this.totalQuantity = orderDetails.stream().mapToInt(OrderDetail::getQuantity).sum();
-    this.totalSupplyPrice = orderDetails.stream().mapToLong(OrderDetail::getProductSupplyPrice).sum();
-    this.totalVat = orderDetails.stream().map(OrderDetail::getProductVat).reduce(BigDecimal.ZERO, BigDecimal::add);
-    this.totalAmount = this.totalSupplyPrice + VatCalculator.vatToLong(this.totalVat);
+    this.totalQuantity = PriceCalculator.calTotalQuantityFromEntity(orderDetails);
+    this.totalSupplyPrice = PriceCalculator.calTotalSupplyPriceFromEntity(orderDetails);
+    this.totalVat = PriceCalculator.calTotalVatFromEntity(orderDetails);
+    this.totalAmount = PriceCalculator.calTotalAmount(this.totalSupplyPrice, this.totalVat);
   }
 }
