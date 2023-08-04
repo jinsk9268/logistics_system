@@ -26,6 +26,12 @@ public class OrderDetailDto {
     @NotNull
     private BigDecimal productVat;
 
+    public Request(int quantity, Product product) {
+      this.quantity = quantity;
+      this.productSupplyPrice = PriceCalculator.calProductSupplyPrice(quantity, product.getBoxSupplyPrice());
+      this.productVat = VatCalculator.multiplyIntWithVat(product.getBoxQuantity(), product.getBoxVat());
+    }
+
     public OrderDetail toEntity(Order order, Product product) {
       return OrderDetail.builder()
           .id(new DetailCompositeKey(order.getId(), product.getCode()))
