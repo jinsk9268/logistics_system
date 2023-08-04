@@ -6,10 +6,7 @@ import com.jin.logistics.domain.product.entity.Product;
 import com.jin.logistics.domain.util.DetailCompositeKey;
 import com.jin.logistics.util.PriceCalculator;
 import com.jin.logistics.util.VatCalculator;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
@@ -29,7 +26,7 @@ public class OrderDetailDto {
     public Request(int quantity, Product product) {
       this.quantity = quantity;
       this.productSupplyPrice = PriceCalculator.calProductSupplyPrice(quantity, product.getBoxSupplyPrice());
-      this.productVat = VatCalculator.multiplyIntWithVat(product.getBoxQuantity(), product.getBoxVat());
+      this.productVat = VatCalculator.multiplyIntWithVat(quantity, product.getBoxVat());
     }
 
     public OrderDetail toEntity(Order order, Product product) {
