@@ -4,6 +4,7 @@ import com.jin.logistics.domain.order.entity.Order;
 import com.jin.logistics.domain.order.entity.OrderDetail;
 import com.jin.logistics.domain.product.entity.Product;
 import com.jin.logistics.domain.util.DetailCompositeKey;
+import com.jin.logistics.util.PriceCalculator;
 import com.jin.logistics.util.VatCalculator;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,7 +34,7 @@ public class OrderDetailDto {
           .quantity(quantity)
           .productSupplyPrice(productSupplyPrice)
           .productVat(productVat)
-          .productTotalAmount(productSupplyPrice + VatCalculator.vatToLong(productVat))
+          .productTotalAmount(PriceCalculator.calTotalPrice(productSupplyPrice, productVat))
           .build();
     }
   }

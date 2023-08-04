@@ -3,6 +3,7 @@ package com.jin.logistics.domain.order.entity;
 import com.jin.logistics.domain.product.entity.Product;
 import com.jin.logistics.domain.util.BaseEntity;
 import com.jin.logistics.domain.util.DetailCompositeKey;
+import com.jin.logistics.util.PriceCalculator;
 import com.jin.logistics.util.VatCalculator;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -40,10 +41,10 @@ public class OrderDetail extends BaseEntity {
 
   public void changeQuantity(int changeQuantity) {
     this.quantity = changeQuantity;
-    this.productSupplyPrice = changeQuantity * (long) this.product.getBoxSupplyPrice();
+    this.productSupplyPrice = PriceCalculator.calSupplyPrice(changeQuantity, this.product.getBoxSupplyPrice());
     if (!this.productVat.equals(BigDecimal.ZERO)) {
       this.productVat = VatCalculator.multiplyIntWithVat(changeQuantity, this.product.getBoxVat());
     }
-    this.productTotalAmount = this.productSupplyPrice + VatCalculator.vatToLong(this.productVat);
+    this.productTotalAmount = PriceCalculator.calTotalPrice(this.productSupplyPrice, this.productVat);
   }
 }
