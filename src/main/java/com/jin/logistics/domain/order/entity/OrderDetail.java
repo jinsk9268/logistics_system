@@ -41,7 +41,7 @@ public class OrderDetail extends BaseEntity {
 
   public void changeQuantity(int changeQuantity) {
     this.quantity = changeQuantity;
-    this.productSupplyPrice = PriceCalculator.calSupplyPrice(changeQuantity, this.product.getBoxSupplyPrice());
+    this.productSupplyPrice = PriceCalculator.calProductSupplyPrice(changeQuantity, this.product.getBoxSupplyPrice());
     if (!this.productVat.equals(BigDecimal.ZERO)) {
       this.productVat = VatCalculator.multiplyIntWithVat(changeQuantity, this.product.getBoxVat());
     }
