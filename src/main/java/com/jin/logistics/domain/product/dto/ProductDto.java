@@ -1,6 +1,7 @@
 package com.jin.logistics.domain.product.dto;
 
 import com.jin.logistics.domain.product.entity.Product;
+import com.jin.logistics.util.PriceCalculator;
 import com.jin.logistics.util.VatCalculator;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -40,7 +41,7 @@ public class ProductDto {
           .supplyPrice(supplyPrice)
           .vat(vat)
           .boxQuantity(boxQuantity)
-          .boxSupplyPrice(supplyPrice * boxQuantity)
+          .boxSupplyPrice(PriceCalculator.calBoxSupplyPrice(boxQuantity, supplyPrice))
           .boxVat(VatCalculator.multiplyIntWithVat(boxQuantity, vat))
           .description(description)
           .build();
