@@ -1,6 +1,9 @@
 package com.jin.logistics.util;
 
+import com.jin.logistics.domain.order.entity.OrderDetail;
+
 import java.math.BigDecimal;
+import java.util.List;
 
 public class PriceCalculator {
 
@@ -12,7 +15,19 @@ public class PriceCalculator {
     return quantity * (long) supplyPrice;
   }
 
-  public static long calTotalPrice(long productSupplyPrice, BigDecimal productVat) {
+  public static int calTotalQuantityFromEntity(List<OrderDetail> orderDetails) {
+    return orderDetails.stream().mapToInt(OrderDetail::getQuantity).sum();
+  }
+
+  public static long calTotalSupplyPriceFromEntity(List<OrderDetail> orderDetails) {
+    return orderDetails.stream().mapToLong(OrderDetail::getProductSupplyPrice).sum();
+  }
+
+  public static BigDecimal calTotalVatFromEntity(List<OrderDetail> orderDetails) {
+    return orderDetails.stream().map(OrderDetail::getProductVat).reduce(BigDecimal.ZERO, BigDecimal::add);
+  }
+
+  public static long calTotalAmount(long productSupplyPrice, BigDecimal productVat) {
     return productSupplyPrice + VatCalculator.vatToLong(productVat);
   }
 }
