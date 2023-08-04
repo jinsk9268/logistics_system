@@ -45,6 +45,6 @@ public class OrderDetail extends BaseEntity {
     if (!this.productVat.equals(BigDecimal.ZERO)) {
       this.productVat = VatCalculator.multiplyIntWithVat(changeQuantity, this.product.getBoxVat());
     }
-    this.productTotalAmount = PriceCalculator.calTotalPrice(this.productSupplyPrice, this.productVat);
+    this.productTotalAmount = PriceCalculator.calTotalAmount(this.productSupplyPrice, this.productVat);
   }
 }
