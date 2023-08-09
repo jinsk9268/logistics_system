@@ -1,50 +1,36 @@
 package com.jin.logistics.domain.order.entity;
 
 import com.jin.logistics.domain.product.entity.Product;
-import com.jin.logistics.domain.util.BaseEntity;
 import com.jin.logistics.domain.util.DetailCompositeKey;
-import com.jin.logistics.util.PriceCalculator;
-import com.jin.logistics.util.VatCalculator;
+import com.jin.logistics.domain.util.DetailEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import java.math.BigDecimal;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Builder
-public class OrderDetail extends BaseEntity {
+public class OrderDetail extends DetailEntity {
 
-  @EmbeddedId
-  private DetailCompositeKey id;
   @MapsId("id")
   @ManyToOne(optional = false)
   @JoinColumn(name = "order_id")
   private Order order;
-  @MapsId("productCode")
-  @ManyToOne(optional = false)
-  @JoinColumn(name = "product_code")
-  private Product product;
-  @Column(nullable = false)
-  private int quantity;
-  @Column(nullable = false)
-  private long productSupplyPrice;
-  @Column(nullable = false, columnDefinition = "DECIMAL(10, 1) DEFAULT 0")
-  private BigDecimal productVat;
-  @Column(nullable = false)
-  private long productTotalAmount;
 
-  public void changeQuantity(int changeQuantity) {
-    this.quantity = changeQuantity;
-    this.productSupplyPrice = PriceCalculator.calProductSupplyPrice(changeQuantity, this.product.getBoxSupplyPrice());
-    if (!this.productVat.equals(BigDecimal.ZERO)) {
-      this.productVat = VatCalculator.multiplyIntWithVat(changeQuantity, this.product.getBoxVat());
-    }
-    this.productTotalAmount = PriceCalculator.calTotalAmount(this.productSupplyPrice, this.productVat);
+  @Builder
+  public OrderDetail(
+      DetailCompositeKey id, Product product, int quantity, long productSupplyPrice,
+      BigDecimal productVat, long productTotalAmount, Order order
+  ) {
+    super(id, product, quantity, productSupplyPrice, productVat, productTotalAmount);
+    this.order = order;
   }
 }
